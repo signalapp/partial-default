@@ -1,0 +1,30 @@
+#
+# Copyright 2023 Signal Messenger, LLC.
+# SPDX-License-Identifier: AGPL-3.0-only
+#
+
+[workspace.package]
+version = "0.1.0"
+repository = "https://github.com/signalapp/partial-default"
+
+[package]
+name = "partial-default"
+edition = "2021"
+version.workspace = true
+repository.workspace = true
+
+description = "Provides PartialDefault, a trait similar to Default but with fewer guarantees"
+license = "AGPL-3.0-only"
+keywords = ["default", "trait", "empty", "uninitialized"]
+categories = ["rust-patterns", "no-std::no-alloc"]
+
+[dependencies]
+partial-default-derive = { path = "derive", version = "=0.1.0", optional = true }
+
+[features]
+derive = ["dep:partial-default-derive"]
+
+[package.metadata.docs.rs]
+all-features = true
+# Provide those nice cfg callouts in the generate docs.
+rustdoc-args = ["--cfg", "docsrs"]

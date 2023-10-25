@@ -1,0 +1,25 @@
+#
+# Original Copyright 2017 Idan Arye
+# Modifications Copyright 2023 Signal Messenger, LLC.
+# SPDX-License-Identifier: AGPL-3.0-only
+#
+
+[package]
+name = "partial-default-derive"
+edition = "2021"
+version.workspace = true
+repository.workspace = true
+
+description = "Derive-macro support for PartialDefault"
+license = "AGPL-3.0-only"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = "2"
+quote = "1"
+proc-macro2 = "1.0.69"
+
+[dev-dependencies]
+partial-default = { path = "..", features = ["derive"] }
