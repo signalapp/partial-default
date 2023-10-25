@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: rustup toolchain default ${{ matrix.rust }} --profile minimal
+      - run: rustup toolchain install ${{ matrix.rust }} --profile minimal && rustup default ${{ matrix.rust }}
       - run: cargo test --workspace --all-features
 
   clippy:
@@ -25,4 +25,4 @@ jobs:
       # Default to latest stable as installed on the runners.
       # This does mean there may be updates that break this job at some point.
       - run: cargo fmt --all -- --check
-      - run: cargo clippy --workspace --all-targets --all-features -- -D warning
+      - run: cargo clippy --workspace --all-targets --all-features -- -D warnings
